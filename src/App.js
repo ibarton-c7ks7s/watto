@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Route } from 'react-router';
+import { ConnectedRouter } from 'react-router-redux';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <div className="App-header-inner">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Watto's Space Emporium</h2>
-          </div>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+import store, { history } from './config/store';
+import Products from './products/';
+import SingleProduct from './single-product';
+
+const App = () => (
+  <Provider store={store}>
+    { /* ConnectedRouter will use the store from Provider automatically */ }
+    <ConnectedRouter history={history}>
+      <div className="Watto">
+        <h1>Watto</h1>
+        <Route exact path="/" component={Products}/>
+        <Route path="/product/:id" component={SingleProduct}/>
       </div>
-    );
-  }
-}
+    </ConnectedRouter>
+  </Provider>
+);
 
 export default App;
