@@ -7,6 +7,9 @@ import lambdaT4 from '../img/lambda-class-t4-a-shuttle.png';
 import rz1 from '../img/rz-1-a-wing.png';
 import bWing from '../img/b-wing-starfighter.jpg';
 
+// since there's no unique ID per starfighter in the JSON
+// response, we have to put these images in the order that
+// they appear in the JSON feed. Keep the order exact!
 const images = [
     tieFighter,
     xWing,

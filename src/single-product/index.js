@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Map } from 'immutable';
+import { Link } from 'react-router';
 import mapDispatchToProps from '../common/action-mapper';
 import TechSpecs from './tech-specs/';
 import ProductImageModal from './product-image-modal/';
 import images from '../common/images';
+import ErrorDialog from '../common/components/error-dialog/';
 import './single-product.css';
 
 class SingleProduct extends Component {
@@ -24,7 +26,8 @@ class SingleProduct extends Component {
     }
 
     componentDidMount () {
-        // don't fetch if we pulled from the cache/store
+        // don't fetch if we pulled from the cache/store,
+        // only fetch if product not found.
         if (!Map.isMap(this.props.$$product)) {
             this.props.fetchProducts();
         }
@@ -43,12 +46,20 @@ class SingleProduct extends Component {
     }
 
     render () {
-        const { $$product } = this.props;
+        const { $$product, error } = this.props;
         if (!$$product) return <noscript />
+        if (error) {
+            return (
+                <div className="Products">
+                    <ErrorDialog error={error} />
+                </div>
+            )
+        }
         const img = images[this.props.match.params.id];
         const name = $$product.get('name')
         return (
             <div className="Single-product">
+                <Link to={'/'}>&lt; Home</Link>
                 <h2>{name}</h2>
                 <div className="Single-product-details">
                     <div className="Single-product-image">

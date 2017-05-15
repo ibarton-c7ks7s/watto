@@ -1,9 +1,12 @@
 import 'isomorphic-fetch';
 
+// constants for action names
 export const PRODUCTS_FETCH_STARTED = 'PRODUCTS_FETCH';
 export const PRODUCTS_FETCH_COMPLETED = 'PRODUCTS_FETCH_COMPLETED';
 export const PRODUCTS_FETCH_FAILED = 'PRODUCTS_FETCH_FAILED';
 
+// get products and return those products or
+// an error code as needed.
 export const fetchProducts = () => (dispatch, getState) => {
     dispatch({
         type: PRODUCTS_FETCH_STARTED
@@ -25,7 +28,7 @@ export const fetchProducts = () => (dispatch, getState) => {
             return dispatch({
                 type: PRODUCTS_FETCH_FAILED,
                 payload: {
-                    error: err
+                    error: err.message
                 }
             })
         });

@@ -8,6 +8,10 @@
 4. `npm start` to run the app
 5. Visit `http://localhost:3000/` in your browser.
 
+## Production build:
+1. `npm run build`
+2. Upload the `build/` directory to a static webhost.
+
 ## Some assumptions I made:
 
 1. There were no images or models linked from the JSON response. I had to find images off the internet to get this to work. A better API would have links to product images.
