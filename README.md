@@ -9,6 +9,7 @@
 5. Visit `http://localhost:3000/` in your browser.
 
 ## Production build:
+
 1. `npm run build`
 2. Upload the `build/` directory to a static webhost.
 

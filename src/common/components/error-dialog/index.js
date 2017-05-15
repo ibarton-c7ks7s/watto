@@ -8,7 +8,7 @@ const ErrorDialog = ({error}) => {
             <h3>Failed to fetch products. Error: {error}</h3>
         </div>
     )
-}
+};
 
 ErrorDialog.propTypes = {
     error: PropTypes.string.isRequired

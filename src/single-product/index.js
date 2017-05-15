@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Map } from 'immutable';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import mapDispatchToProps from '../common/action-mapper';
 import TechSpecs from './tech-specs/';
 import ProductImageModal from './product-image-modal/';
@@ -59,7 +59,7 @@ class SingleProduct extends Component {
         const name = $$product.get('name')
         return (
             <div className="Single-product">
-                <Link to={'/'}>&lt; Home</Link>
+                <Link to="/">&lt; All Spaceships</Link>
                 <h2>{name}</h2>
                 <div className="Single-product-details">
                     <div className="Single-product-image">

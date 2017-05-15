@@ -11,7 +11,9 @@ class Products extends Component {
 
     static propTypes = {
         fetchProducts: PropTypes.func.isRequired,
-        $$products: PropTypes.instanceOf(List).isRequired
+        $$products: PropTypes.instanceOf(List).isRequired,
+        error: PropTypes.string,
+        isLoading: PropTypes.bool
     };
 
     componentDidMount () {
@@ -23,7 +25,14 @@ class Products extends Component {
     }
 
     render () {
-        const { error, $$products } = this.props
+        const { error, isLoading, $$products } = this.props
+        if (isLoading) {
+            return (
+                <div className="Products">
+                    <p>Loading, please wait...</p>
+                </div>
+            )
+        }
         if (error) {
             return (
                 <div className="Products">
@@ -49,7 +58,8 @@ class Products extends Component {
 const mapStateToProps = ($$state, ownProps) => {
     return {
         $$products: $$state.getIn(['products', 'items']),
-        error: $$state.getIn(['products', 'error'])
+        error: $$state.getIn(['products', 'error']),
+        isLoading: $$state.getIn(['products', 'isLoading'])
     };
 };
 
