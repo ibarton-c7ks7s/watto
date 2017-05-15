@@ -1,0 +1,35 @@
+.Single-product-attribute {
+    display: flex;
+    flex-direction: row;
+}
+.Single-product-attribute-name {
+    width: 25%;
+    padding: 2px 5px;
+}
+.Single-product-attribute-value {
+    flex: 1;
+    padding: 2px 5px;
+}
+
+.Single-product-details {
+    display: flex;
+    flex-direction: row;
+}
+
+.Single-product-image {
+    width: 50%;
+}
+
+.Product-image-detail {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.Tech-specs {
+    flex: 1;
+    margin-left: 5%;
+}
+
+.Single-product-description {
+    margin: 20px 0;
+}

@@ -19,6 +19,7 @@ export default createReducer(initialState, {
         return $$state.set('isLoading', false).set('items', fromJS(action.payload.products));
     },
     [PRODUCTS_FETCH_FAILED]: ($$state, action) => {
+        console.error(action.payload.error);
         return $$state.set('isLoading', false).set('error', action.payload.error);
     }
 });

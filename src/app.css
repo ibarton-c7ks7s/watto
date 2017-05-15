@@ -1,4 +1,11 @@
-.Watto-content {
-    max-width: 1170px;
-    margin: auto;
+body {
+    background: #069;
+}
+.Watto {
+    max-width: 1140px;
+    margin: 0 auto 20px;
+    padding: 0 15px 20px;
+    border-radius: 10px;
+    background: white;
+    font-family: "Avenir Next", "Helvetica Neue", Ubuntu, sans-serif;
 }
