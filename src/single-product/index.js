@@ -15,7 +15,9 @@ class SingleProduct extends Component {
     static propTypes = {
         fetchProducts: PropTypes.func.isRequired,
         match: PropTypes.object.isRequired,
-        $$product: PropTypes.instanceOf(Map)
+        $$product: PropTypes.instanceOf(Map),
+        error: PropTypes.string,
+        isLoading: PropTypes.bool
     };
 
     constructor(props, context) {
@@ -46,8 +48,14 @@ class SingleProduct extends Component {
     }
 
     render () {
-        const { $$product, error } = this.props;
-        if (!$$product) return <noscript />
+        const { $$product, error, isLoading } = this.props;
+        if (isLoading) {
+            return (
+                <div className="Products">
+                    <p>Loading, please wait...</p>
+                </div>
+            )
+        }
         if (error) {
             return (
                 <div className="Products">
@@ -55,6 +63,7 @@ class SingleProduct extends Component {
                 </div>
             )
         }
+        if (!$$product) return <noscript />
         const img = images[this.props.match.params.id];
         const name = $$product.get('name')
         return (
@@ -80,7 +89,9 @@ class SingleProduct extends Component {
 
 const mapStateToProps = ($$state, ownProps) => {
     return {
-        $$product: $$state.getIn(['products', 'items', ownProps.match.params.id])
+        $$product: $$state.getIn(['products', 'items', ownProps.match.params.id]),
+        error: $$state.getIn(['products', 'error']),
+        isLoading: $$state.getIn(['products', 'isLoading'])
     };
 };
 
